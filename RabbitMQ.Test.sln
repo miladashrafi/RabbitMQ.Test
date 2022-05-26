@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Producer", "Producer\Producer.csproj", "{76C7C2A9-2306-4F71-BBF2-10AA8F1BC220}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer1", "Consumer\Consumer1.csproj", "{1997748F-721D-4829-A128-EBB4D8189269}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer2", "Consumer2\Consumer2.csproj", "{5AB0D55E-DD0C-4272-8859-887E10D58275}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76C7C2A9-2306-4F71-BBF2-10AA8F1BC220}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76C7C2A9-2306-4F71-BBF2-10AA8F1BC220}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76C7C2A9-2306-4F71-BBF2-10AA8F1BC220}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76C7C2A9-2306-4F71-BBF2-10AA8F1BC220}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1997748F-721D-4829-A128-EBB4D8189269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1997748F-721D-4829-A128-EBB4D8189269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1997748F-721D-4829-A128-EBB4D8189269}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1997748F-721D-4829-A128-EBB4D8189269}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AB0D55E-DD0C-4272-8859-887E10D58275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AB0D55E-DD0C-4272-8859-887E10D58275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AB0D55E-DD0C-4272-8859-887E10D58275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AB0D55E-DD0C-4272-8859-887E10D58275}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B506C6E-27DE-47F1-84A5-56418233369E}
+	EndGlobalSection
+EndGlobal
