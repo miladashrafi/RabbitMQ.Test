@@ -5,9 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
-namespace Consumer2
+namespace Consumer4
 {
     public class QueueConsumer
     {
@@ -35,18 +36,18 @@ namespace Consumer2
                                     autoDelete: true,
                                     arguments: null);
 
-            //var queueName = "Test";
-            //channel.QueueDeclare(queueName, true, false, true, null);
+            var queueName = "fanout-queue2";
+            channel.QueueDeclare(queueName, true, false, true, null);
 
-            var queueName = channel.QueueDeclare().QueueName;
+            //var queueName = channel.QueueDeclare().QueueName;
 
             channel.QueueBind(queue: queueName,
-                              exchange: _topicExchange,
-                              routingKey: "topic.*");
+                              exchange: _fanoutExchange,
+                              routingKey: "");
 
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += Consumer_Received;
-            channel.BasicConsume(queueName, true, consumer);
+            channel.BasicConsume(queueName, false, consumer);
             Console.ReadLine();
         }
 
@@ -54,6 +55,7 @@ namespace Consumer2
         {
             var body = Encoding.UTF8.GetString(e.Body.ToArray());
             Console.WriteLine($"Exchange: \"{e.Exchange}\" RoutingKey: \"{e.RoutingKey}\" Body: {body}");
+            ((EventingBasicConsumer?)sender)?.Model?.BasicAck(e.DeliveryTag, false);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Consumer2
+namespace Consumer3
 {
     public class QueueConsumer
     {
@@ -35,14 +35,14 @@ namespace Consumer2
                                     autoDelete: true,
                                     arguments: null);
 
-            //var queueName = "Test";
-            //channel.QueueDeclare(queueName, true, false, true, null);
+            var queueName = "fanout-queue1";
+            channel.QueueDeclare(queueName, true, false, true, null);
 
-            var queueName = channel.QueueDeclare().QueueName;
+            //var queueName = channel.QueueDeclare().QueueName;
 
             channel.QueueBind(queue: queueName,
-                              exchange: _topicExchange,
-                              routingKey: "topic.*");
+                              exchange: _fanoutExchange,
+                              routingKey: "");
 
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += Consumer_Received;

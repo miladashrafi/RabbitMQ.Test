@@ -1,6 +1,8 @@
 ﻿using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+using System.Text;
 
-namespace Consumer2
+namespace Consumer1
 {
     internal class Program
     {
@@ -15,5 +17,6 @@ namespace Consumer2
             using var channel = connection.CreateModel();
             QueueConsumer.Consume(channel);
         }
+
     }
 }

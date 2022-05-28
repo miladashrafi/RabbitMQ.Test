@@ -1,6 +1,7 @@
-﻿using RabbitMQ.Client;
+﻿
+using RabbitMQ.Client;
 
-namespace Consumer2
+namespace Consumer4
 {
     internal class Program
     {

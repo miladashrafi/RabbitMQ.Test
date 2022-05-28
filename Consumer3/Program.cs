@@ -1,8 +1,7 @@
-﻿using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
-using System.Text;
+﻿
+using RabbitMQ.Client;
 
-namespace Consumer1
+namespace Consumer3
 {
     internal class Program
     {
@@ -10,12 +9,12 @@ namespace Consumer1
         {
             var factory = new ConnectionFactory
             {
-                Uri = new Uri("amqp://guest:guest@localhost:5672")
+                Uri = new Uri("amqp://guest:guest@localhost:5672"),
+                AutomaticRecoveryEnabled = true
             };
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();
             QueueConsumer.Consume(channel);
         }
-
     }
 }

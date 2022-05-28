@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Consumer2
+namespace Consumer1
 {
     public class QueueConsumer
     {
@@ -41,8 +41,8 @@ namespace Consumer2
             var queueName = channel.QueueDeclare().QueueName;
 
             channel.QueueBind(queue: queueName,
-                              exchange: _topicExchange,
-                              routingKey: "topic.*");
+                              exchange: _directExchange,
+                              routingKey: "direct");
 
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += Consumer_Received;
