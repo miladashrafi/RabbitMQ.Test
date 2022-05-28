@@ -20,25 +20,25 @@ namespace Consumer1
             channel.ExchangeDeclare(exchange: _directExchange,
                                     type: ExchangeType.Direct,
                                     durable: true,
-                                    autoDelete: true,
+                                    autoDelete: false,
                                     arguments: null);
 
             channel.ExchangeDeclare(exchange: _topicExchange,
                                     type: ExchangeType.Topic,
                                     durable: true,
-                                    autoDelete: true,
+                                    autoDelete: false,
                                     arguments: null);
 
             channel.ExchangeDeclare(exchange: _fanoutExchange,
                                     type: ExchangeType.Fanout,
                                     durable: true,
-                                    autoDelete: true,
+                                    autoDelete: false,
                                     arguments: null);
 
-            //var queueName = "Test";
-            //channel.QueueDeclare(queueName, true, false, true, null);
+            var queueName = "consumer1-queue";
+            channel.QueueDeclare(queueName, true, false, false, null);
 
-            var queueName = channel.QueueDeclare().QueueName;
+            //var queueName = channel.QueueDeclare().QueueName;
 
             channel.QueueBind(queue: queueName,
                               exchange: _directExchange,

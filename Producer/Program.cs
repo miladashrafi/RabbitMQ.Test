@@ -11,7 +11,9 @@ namespace Producer
             var factory = new ConnectionFactory
             {
                 Uri = new Uri("amqp://guest:guest@localhost:5672"),
-                AutomaticRecoveryEnabled = true
+                AutomaticRecoveryEnabled = true,
+                NetworkRecoveryInterval = TimeSpan.FromDays(1),
+                TopologyRecoveryEnabled = true
             };
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();

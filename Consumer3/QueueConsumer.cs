@@ -20,23 +20,23 @@ namespace Consumer3
             channel.ExchangeDeclare(exchange: _directExchange,
                                     type: ExchangeType.Direct,
                                     durable: true,
-                                    autoDelete: true,
+                                    autoDelete: false,
                                     arguments: null);
 
             channel.ExchangeDeclare(exchange: _topicExchange,
                                     type: ExchangeType.Topic,
                                     durable: true,
-                                    autoDelete: true,
+                                    autoDelete: false,
                                     arguments: null);
 
             channel.ExchangeDeclare(exchange: _fanoutExchange,
                                     type: ExchangeType.Fanout,
                                     durable: true,
-                                    autoDelete: true,
+                                    autoDelete: false,
                                     arguments: null);
 
             var queueName = "fanout-queue1";
-            channel.QueueDeclare(queueName, true, false, true, null);
+            channel.QueueDeclare(queueName, true, false, false, null);
 
             //var queueName = channel.QueueDeclare().QueueName;
 

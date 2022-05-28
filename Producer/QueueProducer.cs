@@ -19,19 +19,19 @@ namespace Producer
             channel.ExchangeDeclare(exchange: _directExchange,
                                     type: ExchangeType.Direct,
                                     durable: true,
-                                    autoDelete: true,
+                                    autoDelete: false,
                                     arguments: null);
 
             channel.ExchangeDeclare(exchange: _topicExchange,
                                     type: ExchangeType.Topic,
                                     durable: true,
-                                    autoDelete: true,
+                                    autoDelete: false,
                                     arguments: null);
 
             channel.ExchangeDeclare(exchange: _fanoutExchange,
                                     type: ExchangeType.Fanout,
                                     durable: true,
-                                    autoDelete: true,
+                                    autoDelete: false,
                                     arguments: null);
             var count = 1;
             var list = new List<string>
