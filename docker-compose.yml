@@ -1,14 +1,16 @@
 version: '3.4'
-name: RabbitMQ.Test
+name: rabbitmq-test
 services:
   producer:
     image: ${DOCKER_REGISTRY-}producer
+    restart: on-failure:10
     build:
       context: .
       dockerfile: Producer/Dockerfile
 
   consumer1:
     image: ${DOCKER_REGISTRY-}consumer1
+    restart: on-failure:10
     build:
       context: .
       dockerfile: Consumer1/Dockerfile
@@ -16,6 +18,7 @@ services:
 
   consumer2:
     image: ${DOCKER_REGISTRY-}consumer2
+    restart: on-failure:10
     build:
       context: .
       dockerfile: Consumer2/Dockerfile
@@ -23,6 +26,7 @@ services:
 
   consumer3:
     image: ${DOCKER_REGISTRY-}consumer3
+    restart: on-failure:10
     build:
       context: .
       dockerfile: Consumer3/Dockerfile
@@ -30,22 +34,19 @@ services:
 
   consumer4:
     image: ${DOCKER_REGISTRY-}consumer4
+    restart: on-failure:10
     build:
       context: .
       dockerfile: Consumer4/Dockerfile
 
   rabbitmq:
-    image: rabbitmq:3-management
-    hostname: "RabbitMQ"
+    image: rabbitmq:management-alpine
+    restart: on-failure:10
+    hostname: "host.docker.internal"
     container_name: "rabbitmq"
     ports:
       - '5672:5672'
       - '15672:15672'
     environment:
-    - RABBITMQ_DEFAULT_USER=guest
-    - RABBITMQ_DEFAULT_PASS=guest
-    volumes:
-      - 'rabbitmq_data:/bitnami/rabbitmq/mnesia'
-volumes:
-  rabbitmq_data:
-    driver: local
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
