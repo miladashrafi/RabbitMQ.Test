@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Consumer3": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

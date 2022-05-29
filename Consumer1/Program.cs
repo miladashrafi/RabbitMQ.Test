@@ -1,7 +1,4 @@
 ﻿using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
-using System.Text;
-
 namespace Consumer1
 {
     internal class Program
@@ -10,9 +7,9 @@ namespace Consumer1
         {
             var factory = new ConnectionFactory
             {
-                Uri = new Uri("amqp://guest:guest@localhost:5672"),
+                Uri = new Uri("amqp://guest:guest@host.docker.internal:5672"),
                 AutomaticRecoveryEnabled = true,
-                NetworkRecoveryInterval = TimeSpan.FromDays(1),
+                NetworkRecoveryInterval = TimeSpan.FromMinutes(1),
                 TopologyRecoveryEnabled = true
             };
             using var connection = factory.CreateConnection();

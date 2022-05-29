@@ -1,6 +1,4 @@
 ﻿using RabbitMQ.Client;
-using System.Text;
-using System.Text.Json;
 
 namespace Producer
 {
@@ -10,7 +8,7 @@ namespace Producer
         {
             var factory = new ConnectionFactory
             {
-                Uri = new Uri("amqp://guest:guest@localhost:5672"),
+                Uri = new Uri("amqp://guest:guest@host.docker.internal:5672"),
                 AutomaticRecoveryEnabled = true,
                 NetworkRecoveryInterval = TimeSpan.FromDays(1),
                 TopologyRecoveryEnabled = true

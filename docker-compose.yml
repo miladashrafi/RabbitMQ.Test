@@ -1,0 +1,51 @@
+version: '3.4'
+name: RabbitMQ.Test
+services:
+  producer:
+    image: ${DOCKER_REGISTRY-}producer
+    build:
+      context: .
+      dockerfile: Producer/Dockerfile
+
+  consumer1:
+    image: ${DOCKER_REGISTRY-}consumer1
+    build:
+      context: .
+      dockerfile: Consumer1/Dockerfile
+
+
+  consumer2:
+    image: ${DOCKER_REGISTRY-}consumer2
+    build:
+      context: .
+      dockerfile: Consumer2/Dockerfile
+
+
+  consumer3:
+    image: ${DOCKER_REGISTRY-}consumer3
+    build:
+      context: .
+      dockerfile: Consumer3/Dockerfile
+
+
+  consumer4:
+    image: ${DOCKER_REGISTRY-}consumer4
+    build:
+      context: .
+      dockerfile: Consumer4/Dockerfile
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: "RabbitMQ"
+    container_name: "rabbitmq"
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    environment:
+    - RABBITMQ_DEFAULT_USER=guest
+    - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - 'rabbitmq_data:/bitnami/rabbitmq/mnesia'
+volumes:
+  rabbitmq_data:
+    driver: local
